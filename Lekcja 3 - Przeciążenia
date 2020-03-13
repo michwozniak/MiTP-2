@@ -54,6 +54,7 @@ int main()
 
 #include <iostream>
 #include <stdio.h>
+#include <cmath>
 using namespace std;
 
 class Vector {
@@ -64,8 +65,6 @@ public:
     void printElements();
     void printElements(Vector);
     int dimension_;
-
-private:
     double data_[3] = {0,0,0};
 };
 
@@ -111,6 +110,28 @@ void Vector::printElements(Vector w)
     }
 }
 
+float module(float *a)
+{
+    float mod=0;
+    for (int i=0; i<3; i++){
+        mod=mod+a[i]*a[i];
+    }
+    mod=sqrt(mod);
+    return mod;
+}
+
+float module(Vector a)
+{
+    float mod=0;
+    for(int i = 0; i<a.dimension_; i++){
+        mod=mod+a.data_[i]*a.data_[i];
+    }
+    mod=sqrt(mod);
+    return mod;
+}
+
+
+
 
 int main()
 {
@@ -137,4 +158,9 @@ int main()
     cout << "\n";
     r2.printElements(r3);
 
+    // Moduły z wektorow  zad 4  //
+
+    float vect[3]={1,2,3}; // wektor definiowany tablic
+    cout << "Modul wektora definiowanego tablica: " << module(vect) << endl;
+    cout << "Modul wektora defioniowanego obiektem klasy Vector: " << module(r3) << endl;
 }
