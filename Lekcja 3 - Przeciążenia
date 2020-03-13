@@ -58,6 +58,9 @@ int main()
 using namespace std;
 
 class Vector {
+private:
+    double data_[3] = {0,0,0};
+    friend float module(Vector);    /* zad 5 */
 public:
     Vector(double);
     Vector(double, double);
@@ -65,7 +68,8 @@ public:
     void printElements();
     void printElements(Vector);
     int dimension_;
-    double data_[3] = {0,0,0};
+
+
 };
 
 Vector::Vector(double element1)
