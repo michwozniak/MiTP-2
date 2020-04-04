@@ -18,7 +18,7 @@ public:
     }
 
     void wypiszDane(string tekst){             //dwie metody wypiszDane przeciążone argumentami
-        cout << tekst << endl;
+        cout << tekst << imie_ << nazwisko_ << wiek_ << endl;
     }
 
     void wypiszDane(){
@@ -43,7 +43,7 @@ public:
     }
 
     void wypiszDane(string tekst){                          //dwie metody wypiszDane przeciążone argumentami
-        cout << tekst << endl;
+        cout << tekst << imie_ << nazwisko_ << wiek_ << endl;
     }
 
     void wypiszDane(){
@@ -66,7 +66,7 @@ int main()
     sekretarka.wypiszStatus();
 
     kierownik CEO("Robert ","California ", 45, " CEO");                     //zainicjowanie klasy typu kierownik
-    CEO.wypiszDane("Tekst nr 2");
+    CEO.wypiszDane("Tekst nr 2 ");
     CEO.wypiszDane();
     CEO.wypiszStatus();
 
