@@ -1,0 +1,84 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <vector>
+
+using namespace std;
+
+class pracownik {              //stworzenie klasy pracownik
+public:
+    string imie_;
+    string nazwisko_;
+    int wiek_;
+    string status_="pracownik";
+    pracownik(string, string, int);
+
+    void wypiszStatus(){
+        cout << status_ << endl;
+    }
+
+    void wypiszDane(string tekst){             //dwie metody wypiszDane przeciążone argumentami
+        cout << tekst << endl;
+    }
+
+    void wypiszDane(){
+        cout << imie_ << nazwisko_ << wiek_ << endl;
+    }
+};
+
+pracownik::pracownik(string imie, string nazwisko, int wiek){          //Konstruktor klasy pracownik
+    imie_=imie;
+    nazwisko_=nazwisko;
+    wiek_=wiek;
+}
+
+class kierownik: public pracownik{                   //stworzenie klasu kierownik na bazie klasy pracownik
+public:
+    string dzial_;
+    string status_="kierownik";
+    kierownik(string , string , int , string , string );
+
+    void wypiszStatus(){
+        cout << status_ << endl;
+    }
+
+    void wypiszDane(string tekst){                          //dwie metody wypiszDane przeciążone argumentami
+        cout << tekst << endl;
+    }
+
+    void wypiszDane(){
+        cout << imie_ << nazwisko_ << wiek_ << dzial_ << endl;
+    }
+
+    kierownik(string imie, string nazwisko, int wiek, string dzial)          //konstruktor klasy kierownik, lista inicjalizująca z konstruktora klasy pracownik
+    :pracownik(imie, nazwisko, wiek)
+    {
+        dzial_=dzial;
+    }
+
+};
+
+int main()
+{
+    pracownik sekretarka("Janina ", "Kowalska ", 38);                      //zainicjowanie klasy typu pracownik
+    sekretarka.wypiszDane("Tekst nr 1 ");
+    sekretarka.wypiszDane();
+    sekretarka.wypiszStatus();
+
+    kierownik CEO("Robert ","California ", 45, " CEO");                     //zainicjowanie klasy typu kierownik
+    CEO.wypiszDane("Tekst nr 2");
+    CEO.wypiszDane();
+    CEO.wypiszStatus();
+
+
+    vector<pracownik> v;                  //stworzenie dwoch wektorow typu pracownik
+    v.push_back(sekretarka);
+    v.push_back(CEO);
+
+
+    cout << v[0].imie_ << v[0].nazwisko_ << v[0].wiek_ << endl;             //wyswietlenie skladowych elementow tablicy
+    cout << v[1].imie_ << v[1].nazwisko_ << v[1].wiek_ << endl;
+
+
+    return 0;
+}
